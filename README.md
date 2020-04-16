@@ -125,13 +125,5 @@ Total days: 2987
 - [x] CommandLine Support
 - [x] Jalali Support
 
-# Donation❤️
 
-If you like this package you can buy me a cup of coffee ☕️.
-
-You can pay using آپ Application by scanning following qrcode in the application or entering code `95656781`:
-
-![NeshanPardakht](qrcode.png "95656781")
-
-Or donate using [IDPAY](https://idpay.ir/ghodsizadeh)
 
