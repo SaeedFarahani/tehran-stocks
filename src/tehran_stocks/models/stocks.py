@@ -37,6 +37,7 @@ class Stocks(Base):
             self._df = df
             return self._df
         df["date"] = pd.to_datetime(df["dtyyyymmdd"], format="%Y%m%d")
+        df["change"] = (df["close"] - df["open"]) * 100 / df["open"]
         df = df.sort_values("date")
         df.reset_index(drop=True, inplace=True)
         df.set_index("date",inplace=True)
@@ -46,7 +47,7 @@ class Stocks(Base):
 
     @property
     def mpl(self):
-        self._mpl = self.df.rename(columns={"close":"Close","open":"Open","high":"High","low":"Low","vol":"Volume"})
+        self._mpl = self.df.rename(columns={"close":"Close","open":"Open","high":"High","low":"Low","vol":"Volume","change":"change"})
         return self._mpl 
 
     def update(self):
@@ -101,6 +102,7 @@ class StockPrice(Base):
     per = Column(String)
     open = Column(Float)
     last = Column(Float)
+    change = Column(Float)
 
     def __repr__(self):
         return f"{self.stock.name}, {self.date}, {self.close:.0f}"

@@ -1,7 +1,12 @@
-from tehran_stocks import download
+from tehran_stocks import download, Stocks, db
 
 SAIPA = "44891482026867833"
 
+stock1 = Stocks.query.filter_by(code='46348559193224090').first() # find by code on tsetmc url
+stock = Stocks.query.filter(Stocks.name.like('%فولاد%')).first() 
+stock.update() 
+print(Stocks.df)
+stock1.df.to_csv('price.csv')
 
 class TestNames:
     def test_id_from_group(self):
